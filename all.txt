@@ -1,0 +1,266 @@
+Microsoft Windows [Version 10.0.19045.6456]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\integrated>docker --version
+Docker version 29.3.0, build 5927d80
+
+C:\Users\integrated>docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+
+C:\Users\integrated>mkdir docker-github-project
+
+C:\Users\integrated>cd docker-github-project
+
+C:\Users\integrated\docker-github-project>notepad app.py
+
+C:\Users\integrated\docker-github-project>notepad Dockerfile
+
+C:\Users\integrated\docker-github-project>docker build -t myapp:v1 .
+[+] Building 0.3s (1/1) FINISHED                                                                   docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                               0.1s
+ => => transferring dockerfile: 2B                                                                                 0.0s
+ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+
+C:\Users\integrated\docker-github-project>docker images
+                                                                                                    i Info →   U  In Use
+IMAGE                                     ID             DISK USAGE   CONTENT SIZE   EXTRA
+3-demo2-frontend-backend-backend:latest   d56fc0b07591        200MB         48.8MB
+4-demo3-full-stack-backend:latest         4ecf0d136f8d        551MB          141MB
+hello-docker:1.0                          6efd53a8a0d2        200MB         48.8MB
+hello-world:latest                        ef54e839ef54       25.9kB         9.52kB    U
+jenkins/jenkins:lts                       23b84d1066db        802MB          288MB
+nginx:alpine                              1d13701a5f9f       93.4MB         26.9MB
+node:18-alpine                            8d6421d663b4        181MB         45.3MB
+postgres:13-alpine                        fb9065b6e3e2        384MB          107MB
+
+C:\Users\integrated\docker-github-project>docker run myapp:v1
+Unable to find image 'myapp:v1' locally
+docker: Error response from daemon: pull access denied for myapp, repository does not exist or may require 'docker login'
+
+Run 'docker run --help' for more information
+
+[+] Building 0.1s (1/1) FINISHED                                                                   docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 2B                                                                                 0.0s
+ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+
+C:\Users\integrated\docker-github-project>dir
+ Volume in drive C has no label.
+ Volume Serial Number is FE32-F5FE
+
+ Directory of C:\Users\integrated\docker-github-project
+
+25-03-2026  01:45 PM    <DIR>          .
+25-03-2026  01:45 PM    <DIR>          ..
+25-03-2026  01:45 PM                45 app.py
+25-03-2026  01:45 PM                63 Dockerfile.txt
+               2 File(s)            108 bytes
+               2 Dir(s)  15,161,868,288 bytes free
+
+C:\Users\integrated\docker-github-project>rename Dockerfile.txt Dockerfile
+
+C:\Users\integrated\docker-github-project>dir
+ Volume in drive C has no label.
+ Volume Serial Number is FE32-F5FE
+
+ Directory of C:\Users\integrated\docker-github-project
+
+25-03-2026  01:56 PM    <DIR>          .
+25-03-2026  01:56 PM    <DIR>          ..
+25-03-2026  01:45 PM                45 app.py
+25-03-2026  01:45 PM                63 Dockerfile
+               2 File(s)            108 bytes
+               2 Dir(s)  15,151,685,632 bytes free
+
+C:\Users\integrated\docker-github-project>Dockerfile
+'Dockerfile' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\integrated\docker-github-project>docker build -t myapp:v1 .
+[+] Building 134.0s (7/7) FINISHED                                                                 docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 100B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/python:3.10                                                     5.1s
+ => [internal] load .dockerignore                                                                                  0.1s
+ => => transferring context: 2B                                                                                    0.0s
+ => [internal] load build context                                                                                  0.1s
+ => => transferring context: 78B                                                                                   0.0s
+ => [1/2] FROM docker.io/library/python:3.10@sha256:a5ef46a93e429aa07466f536c25962f3c157c0db77f5b9691d1a04a832c  126.7s
+ => => resolve docker.io/library/python:3.10@sha256:a5ef46a93e429aa07466f536c25962f3c157c0db77f5b9691d1a04a832cd6  0.1s
+ => => sha256:33ea0080b6c358aefb01145a42f122919c39c42c92c4b631c1f4c8cf7b4db338 21.15MB / 21.15MB                  15.4s
+ => => sha256:0ff77f49313ec30676b95719e46096785d7a21ea6d51b1505feabf0d949637b5 249B / 249B                         1.3s
+ => => sha256:de021639174a3913fde86456840352f8d37acd8658e84b9ae05603537b815d80 6.08MB / 6.08MB                     6.4s
+ => => sha256:8688d0f2f567884eb217c6f80efa063bdb13a1951e92e6c5cac1ae5b736f5e1b 236.08MB / 236.08MB               115.9s
+ => => sha256:ee3a0e7d77f0c84203cab438fcf345647c8121bbd80506a3c692f8608a14c4f4 67.78MB / 67.78MB                  56.2s
+ => => sha256:8f6ad858d0a46fa8ee628532c70b8dc82d06179d543b0b09ec19fc03d4c5b373 49.30MB / 49.30MB                  33.7s
+ => => sha256:b012eb15dff0bce418c03ec940325aee6aa4300d771c325728855697e620c63a 25.62MB / 25.62MB                  21.3s
+ => => extracting sha256:8f6ad858d0a46fa8ee628532c70b8dc82d06179d543b0b09ec19fc03d4c5b373                          4.8s
+ => => extracting sha256:b012eb15dff0bce418c03ec940325aee6aa4300d771c325728855697e620c63a                          2.1s
+ => => extracting sha256:ee3a0e7d77f0c84203cab438fcf345647c8121bbd80506a3c692f8608a14c4f4                          4.6s
+ => => extracting sha256:8688d0f2f567884eb217c6f80efa063bdb13a1951e92e6c5cac1ae5b736f5e1b                          8.8s
+ => => extracting sha256:de021639174a3913fde86456840352f8d37acd8658e84b9ae05603537b815d80                          0.3s
+ => => extracting sha256:33ea0080b6c358aefb01145a42f122919c39c42c92c4b631c1f4c8cf7b4db338                          1.1s
+ => => extracting sha256:0ff77f49313ec30676b95719e46096785d7a21ea6d51b1505feabf0d949637b5                          0.1s
+ => [2/2] COPY app.py /app.py                                                                                      1.0s
+ => exporting to image                                                                                             0.6s
+ => => exporting layers                                                                                            0.2s
+ => => exporting manifest sha256:44efcad7464d4a1dccfe21d9582fde7f44a1f5f6c2f603d2040a0c79818f2685                  0.0s
+ => => exporting config sha256:fa2591b2680e7ac2a39c05d1e055a5d64b51293b19367ff9e74206746c93a69b                    0.0s
+ => => exporting attestation manifest sha256:11c6acb0875b09a6a596904e63e1e86ea2c130076309109c0102f48185857b1a      0.1s
+ => => exporting manifest list sha256:20ccd95aa413e30869320b65e4d58ab59fba463f01bb2eaf1a4064fdd9548101             0.1s
+ => => naming to docker.io/library/myapp:v1                                                                        0.0s
+ => => unpacking to docker.io/library/myapp:v1                                                                     0.1s
+
+C:\Users\integrated\docker-github-project>docker run myapp:v1
+Hello from Docker + GitHub + Windows
+
+C:\Users\integrated\docker-github-project>notepad app.py
+
+C:\Users\integrated\docker-github-project>docker build -t myapp:v1 .
+[+] Building 2.5s (7/7) FINISHED                                                                   docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 100B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/python:3.10                                                     1.3s
+ => [internal] load .dockerignore                                                                                  0.1s
+ => => transferring context: 2B                                                                                    0.0s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 70B                                                                                   0.0s
+ => CACHED [1/2] FROM docker.io/library/python:3.10@sha256:a5ef46a93e429aa07466f536c25962f3c157c0db77f5b9691d1a04  0.1s
+ => => resolve docker.io/library/python:3.10@sha256:a5ef46a93e429aa07466f536c25962f3c157c0db77f5b9691d1a04a832cd6  0.0s
+ => [2/2] COPY app.py /app.py                                                                                      0.0s
+ => exporting to image                                                                                             0.7s
+ => => exporting layers                                                                                            0.2s
+ => => exporting manifest sha256:534e4c5fddbcce4843034430645cb36108503a734f6709ed91e91c79c9c40e4a                  0.0s
+ => => exporting config sha256:7cd8c5e62443926a1ef6b8abe00958d36ac5bd8f7db60d760ab4945b08da36dc                    0.0s
+ => => exporting attestation manifest sha256:26b0316f20d1d0d691044989ffb1634758f38d1ac2c6d628a76a6256448edb7d      0.1s
+ => => exporting manifest list sha256:f114efc9e589c0f106bbe87daaf2262c37dbef282b244752e41143e472029efc             0.1s
+ => => naming to docker.io/library/myapp:v1                                                                        0.0s
+ => => unpacking to docker.io/library/myapp:v1                                                                     0.1s
+
+C:\Users\integrated\docker-github-project>docker run myapp:v1
+Version 2 Docker App Windows
+
+C:\Users\integrated\docker-github-project>docker ps -a
+CONTAINER ID   IMAGE          COMMAND           CREATED              STATUS                          PORTS     NAMES
+bd5a50678cc3   myapp:v1       "python app.py"   55 seconds ago       Exited (0) 55 seconds ago                 laughing_kowalevski
+5e8f95710fdf   20ccd95aa413   "python app.py"   About a minute ago   Exited (0) About a minute ago             sweet_mccarthy
+ee1c35222eea   hello-world    "/hello"          18 minutes ago       Exited (0) 18 minutes ago                 nifty_gagarin
+
+C:\Users\integrated\docker-github-project>docker stop CONTAINER_ID
+Error response from daemon: No such container: CONTAINER_ID
+
+C:\Users\integrated\docker-github-project>docker stop 5e8f95710fdf2cff179122673078945525bcd111603169bdfe3f74ae0c33dffb
+5e8f95710fdf2cff179122673078945525bcd111603169bdfe3f74ae0c33dffb
+
+C:\Users\integrated\docker-github-project>docker stop bd5a50678cc3817f2535fc7cd3e7d290ac450eb58dfe9cc449ba136b8643ff29
+bd5a50678cc3817f2535fc7cd3e7d290ac450eb58dfe9cc449ba136b8643ff29
+
+C:\Users\integrated\docker-github-project>docker stop ee1c35222eea94a617d59383d937657dc65dc27b5c8099cad1d85536904758de
+ee1c35222eea94a617d59383d937657dc65dc27b5c8099cad1d85536904758de
+
+C:\Users\integrated\docker-github-project>docker rm 5e8f95710fdf2cff179122673078945525bcd111603169bdfe3f74ae0c33dffb
+5e8f95710fdf2cff179122673078945525bcd111603169bdfe3f74ae0c33dffb
+
+C:\Users\integrated\docker-github-project>docker rm bd5a50678cc3817f2535fc7cd3e7d290ac450eb58dfe9cc449ba136b8643ff29
+bd5a50678cc3817f2535fc7cd3e7d290ac450eb58dfe9cc449ba136b8643ff29
+
+C:\Users\integrated\docker-github-project>docker rm ee1c35222eea94a617d59383d937657dc65dc27b5c8099cad1d85536904758de
+ee1c35222eea94a617d59383d937657dc65dc27b5c8099cad1d85536904758de
+
+C:\Users\integrated\docker-github-project>docker rmi myapp:v1
+Untagged: myapp:v1
+Deleted: sha256:f114efc9e589c0f106bbe87daaf2262c37dbef282b244752e41143e472029efc
+
+C:\Users\integrated\docker-github-project>docker rmi myapp:v1
+Error response from daemon: No such image: myapp:v1
+
+C:\Users\integrated\docker-github-project>docker rmi myapp:v2
+Error response from daemon: No such image: myapp:v2
+
+C:\Users\integrated\docker-github-project>git init
+Initialized empty Git repository in C:/Users/integrated/docker-github-project/.git/
+
+C:\Users\integrated\docker-github-project>git add .
+
+C:\Users\integrated\docker-github-project>git commit -m "docker project"
+[master (root-commit) d67860d] docker project
+ 2 files changed, 4 insertions(+)
+ create mode 100644 Dockerfile
+ create mode 100644 app.py
+
+C:\Users\integrated\docker-github-project>git remote add origin https://github.com/jaygopalka009/docker-github-project.git
+
+C:\Users\integrated\docker-github-project>git push -u origin main
+error: src refspec main does not match any
+error: failed to push some refs to 'https://github.com/jaygopalka009/docker-github-project.git'
+
+C:\Users\integrated\docker-github-project>git status
+On branch master
+nothing to commit, working tree clean
+
+C:\Users\integrated\docker-github-project>git push -u origin master
+info: please complete authentication in your browser...
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 340 bytes | 170.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/jaygopalka009/docker-github-project.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+
+C:\Users\integrated\docker-github-project>git add .
+
+C:\Users\integrated\docker-github-project>
+
+C:\Users\integrated\docker-github-project>git commit -m "first commit"
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+C:\Users\integrated\docker-github-project>git branch -M main
+
+C:\Users\integrated\docker-github-project>git branch -M master
+
+C:\Users\integrated\docker-github-project>git push -u origin master
+branch 'master' set up to track 'origin/master'.
+Everything up-to-date
+
+C:\Users\integrated\docker-github-project>git remote add origin https://github.com/jaygopalka009/docker-github-project.git
+error: remote origin already exists.
+
+C:\Users\integrated\docker-github-project>git push -u origin master
+branch 'master' set up to track 'origin/master'.
+Everything up-to-date
+
+C:\Users\integrated\docker-github-project>git log
+commit d67860d55e048236c88e66ed67d3142dc54a5e66 (HEAD -> master, origin/master)
+Author: jaygopalka009 <jaygopalka009@gmail.com>
+Date:   Wed Mar 25 14:07:05 2026 +0530
+
+    docker project
+
+C:\Users\integrated\docker-github-project>
